@@ -1,0 +1,162 @@
+$headerHeight: 65px;
+$mainColor: #ef5350;
+$colorBtn: #ff867c;
+$footerColor: #b61827;
+$mainTextColor: #fff8ed;
+body {
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  max-width: 1700px;
+}
+header {
+  background-color: #ff4d43;
+  padding: 5px;
+  text-align: center;
+  color: $mainTextColor;
+  p {
+    margin-top: -20px;
+  }
+}
+footer {
+  height: $headerHeight;
+  background-color: $footerColor;
+  margin-bottom: 0;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fadeout {
+   animation: .2s ease both fade-out;
+ }
+.fadein {
+  animation: .3s ease both fade-in;
+}
+
+main {
+  //background: url("../Double Ring-1s-200px.svg") center no-repeat;
+  display: flex;
+ min-height: 500px;
+  flex-direction: column;
+
+  .loader {
+
+    display: none;
+  }
+
+  .search-field {
+    padding: 40px 0 20px 0 ;
+    text-align: center;
+    display: flex;
+
+    justify-content: center;
+    input[type='text'] {
+      padding-left: 5px;
+      flex-basis: 40%;
+      min-height: 30px;
+      border-radius: 50px 0 0 50px;
+      outline: none;
+      border: $colorBtn solid 1px;
+      &:focus {
+        border-bottom-color: $footerColor;
+      }
+    }
+    input[type='button'] {
+      margin-left: -5px;
+      flex-basis: 10%;
+      border-radius: 0 50px 50px 0;
+      border: none;
+      background-color: $colorBtn;
+      color: $mainTextColor;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.1em;
+      &:hover {
+        background-color: $footerColor;
+      }
+    }
+  }
+
+  .result-list {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 20px 20px 20px;
+    align-content: space-around;
+
+    .item {
+      margin: 20px 0 20px 0;
+      flex-basis: 30%;
+      @media (max-width: 767px) {
+        flex-basis: 45%;
+        @media (max-width: 600px) {
+          flex-basis: 100%;
+        }
+      }
+
+      //border: #d4d4d4 solid 1px;
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      figure {
+        padding: 0;
+        img {
+          width: 100%;
+        }
+        figcaption {
+          border-top: $colorBtn solid 1px;
+          padding-top: 5px;
+        }
+
+      }
+      &:hover {
+        box-shadow: 0px 1px 5px $colorBtn;
+      }
+    }
+  }
+}
+.overlay {
+  position: fixed;
+  display: flex;
+  //background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  max-width: 1700px;
+  z-index: 10;
+  background: url("../Double Ring-1s-200px.svg") no-repeat center rgba(0, 0, 0, 0.5);
+  iframe {
+    margin: auto;
+  }
+}
+.display-none{
+  display: none;
+}
+
+@for $i from 1 through 8 {
+  .item {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * (.1s);
+    }
+  }
+}
+
+
+
